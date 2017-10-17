@@ -17,10 +17,10 @@ def remove_punct(text):
     >>> remove_punct(",go!So.?uTh")
     'goSouTh'
     """ 
-    
-    table = string.maketrans("","") 
-    new_text = text.translate(table, string.punctuation)
-    print(new_text)
+    return "".join([char for char in text if char not in string.punctuation])
+    #table = string.maketrans("","") 
+    #new_text = text.translate(table, string.punctuation)
+    #print(new_text)
     
     
     pass # The pass statement does nothing. Replace it with the body of your function.

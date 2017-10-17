@@ -2,7 +2,7 @@
 
 from map import rooms
 import string
-
+import re 
 
 def remove_punct(text):
     """This function is used to remove all punctuation
@@ -64,6 +64,7 @@ def normalise_input(user_input):
     user_input = user_input.lower()
     user_input = remove_spaces(user_input) 
     user_input = remove_punct(user_input) 
+    return(user_input) 
 
 
     pass
@@ -186,10 +187,10 @@ def is_valid_exit(exits, user_input):
     >>> is_valid_exit(rooms["Parking"]["exits"], "east")
     True
     """ 
-    if user_input == exits: 
-        True 
-    else: 
-        False 
+     if user_input in exits:
+        return True
+    else:
+        return False
 
     pass
 

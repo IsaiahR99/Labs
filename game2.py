@@ -60,9 +60,10 @@ def normalise_input(user_input):
     'help' 
 
     """ 
-    user_input = user_input.lower()
-    user_input = remove_spaces(user_input) 
-    user_input = remove_punct(user_input) 
+   
+    no_space = remove_spaces(user_input)
+    user_input1 = remove_punct(no_space) 
+    user_input = user_input1.lower() 
     return(user_input) 
 
 
@@ -236,8 +237,11 @@ def move(exits, direction):
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
     False
     """  
-    return rooms[exits[direction]]
-
+    
+    if rooms[exits[direction]] == rooms["name"]: 
+        print(True) 
+    else: 
+        print(False)
     pass
 
 

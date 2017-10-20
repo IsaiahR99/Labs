@@ -156,11 +156,11 @@ def print_menu(exits):
     Where do you want to go?
     """
     print("You can:") 
-    
-    for key in exits:
-        print(rooms)
-        print(print_menu_line(direction, leads_to)) 
+     for direction, room in exits.items():
+        print_menu_line(direction, exit_leads_to(exits, direction))
 
+
+    
     
     # COMPLETE THIS PART:
     # Iterate over available exits:

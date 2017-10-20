@@ -42,7 +42,7 @@ def remove_spaces(text):
     >>> remove_spaces("   ")
     ''
     """ 
-    return re.sub(r'^\s+|\s+$', "", text)
+    return re.sub(r'^\s+|\s+$',"", text)
 
     pass
 
@@ -61,9 +61,8 @@ def normalise_input(user_input):
 
     """ 
    
-    no_space = remove_spaces(user_input)
-    user_input1 = remove_punct(no_space) 
-    user_input = user_input1.lower() 
+    no_punct = remove_punct(user_input)
+    user_input = remove_spaces(no_punct).lower() 
     return(user_input) 
 
 
@@ -118,8 +117,9 @@ def exit_leads_to(exits, direction):
     "your personal tutor's office"
     >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
     'Reception'
-    """ 
-    return(exits[direction])
+    """  
+    room_exit = exits[direction]
+    return rooms[room_exit]["name"]
     pass
     
 
@@ -211,7 +211,15 @@ def menu(exits):
 
 
         pass
-        # COMPLETE THIS PART:
+        # COMPLETE THIS PART: 
+        com = input("> ")
+
+        com = normalise_input(com)
+
+        if is_valid_exit(exits, com):
+            return com
+        else:
+            print("\nInvalid Input\n")
         
         # Display menu
 
@@ -238,11 +246,12 @@ def move(exits, direction):
     False
     """  
     
-    if rooms[exits[direction]] == rooms["name"]: 
-        print(True) 
-    else: 
-        print(False)
-    pass
+    #if rooms[exits[direction]] == rooms["name"]: 
+     #   print(True) 
+    #else: 
+     #   print(False) 
+    
+    return rooms[exits[direction]]
 
 
 # This is the entry point of our program
